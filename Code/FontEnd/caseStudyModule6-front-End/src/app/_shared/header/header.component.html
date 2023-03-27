@@ -1,0 +1,165 @@
+<!--/ Nav Star /-->
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+  <div class="container">
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+            aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <a class="navbar-brand text-brand" routerLink="/">Rocket<span class="color-b">Stay</span></a>
+    <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
+            data-target="#navbarTogglerDemo01" aria-expanded="false">
+      <span class="fa fa-search" aria-hidden="true"></span>
+    </button>
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="''">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'houses'">Places to stay</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'about'">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'hosts'">Hosts</a>
+        </li>
+      </ul>
+    </div>
+    <!--    <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"-->
+    <!--            data-target="#navbarTogglerDemo01" aria-expanded="false">-->
+    <!--      <span class="fa fa-search" aria-hidden="true"></span>-->
+    <!--    </button>-->
+    <ng-template #content let-modal>
+      <div class="section">
+        <div class="section-center ">
+          <div class="container ">
+            <div class="row">
+              <div class="booking-form">
+                <div class="form-header">
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h1 id="modal-basic-title">Make your reservation</h1>
+                </div>
+                <form (ngSubmit)="searchHouse()">
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="address" [(ngModel)]="search.address"
+                           placeholder="Address">
+                    <span class="form-label">Destination</span>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group"><input class="form-control" name="checkIn" [(ngModel)]="search.checkIn"
+                                                     type="date"
+                                                     required> <span
+                        class="form-label">Check In</span></div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group"><input class="form-control" name="checkOut" [(ngModel)]="search.checkOut"
+                                                     type="date"
+                                                     required> <span
+                        class="form-label">Check out</span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <select class="form-control" required name="bedroom" [(ngModel)]="search.bedroomQuantity">
+                          <option value="-1" selected hidden>Bed room. . .</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                        </select> <span class="select-arrow"></span> <span class="form-label">Bed Rooms</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <select class="form-control" required name="bathroom" [(ngModel)]="search.bathroomQuantity">
+                          <option value="-1" selected hidden>Bath room. . .</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                        </select> <span class="select-arrow"></span> <span class="form-label">Bath Rooms</span>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <select class="form-control" required name="idPrice" [(ngModel)]="search.idPrice">
+                          <option value="-1" selected hidden>Price. . .</option>
+                          <option value="1">0 ~ 50$</option>
+                          <option value="2">50 ~ 100$</option>
+                          <option value="3">100 ~ 500$</option>
+                          <option value="4">500 ~ 1000$</option>
+                          <option value="5">1000$ ~</option>
+                        </select> <span class="select-arrow"></span> <span class="form-label">Price</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-btn">
+                    <button type="submit" class="submit-btn" (click)="modal.close('Save click'); searchHouse() ">Book
+                      Now
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <button class=" btn btn-lg btn-outline-success" (click)="open(content)" data-toggle="collapse"
+            data-target="#navbarTogglerDemo01" aria-expanded="false">
+      <span class="fa fa-search" aria-hidden="true"></span>
+    </button>
+    <hr>
+
+    <li class="nav-item" *ngIf="!user" id="d">
+      <a [routerLink]="'login'" role="tab"><i class="icon fa fa-user fa-fw iconsmall"></i>
+        Login</a>
+    </li>
+
+    <div *ngIf="user">
+      <i data-toggle="dropdown" id="b">
+        <img id="a" src="{{user.avatar}}">
+      </i>
+      <div class="dropdown-menu dropdown-menu-right" id="c">
+        <a class="dropdown-item" [routerLink]="['user-show',user.userId]"
+           role="menuitem"><i class="icon fa fa-user fa-fw iconsmall" aria-hidden="true"
+                              title="Hồ sơ"></i>&nbsp;Profile</a>
+        <div class="dropdown-divider" role="presentation"></div>
+        <a class="dropdown-item" [routerLink]="['list-rented-houses',user.userId]"
+           role="menuitem"><i
+          class="icon fa fa-tachometer fa-fw iconsmall" aria-hidden="true"
+          title="Nhà của tôi"></i>&nbsp;History</a>
+        <a class="dropdown-item"
+           [routerLink]="['/statistics/',user.userId]"
+           role="menuitem"><i
+          class="icon fa fa-table fa-fw iconsmall" aria-hidden="true"
+          title="Điểm"></i>&nbsp;Statistics</a>
+        <a class="dropdown-item"
+           [routerLink]="'houses-create'"
+           role="menuitem">&nbsp;<i
+          class="fa fa-address-book" aria-hidden="true"></i>&nbsp;Become a host</a>
+        <a class="dropdown-item" [routerLink]="['change-password',user.userId]"
+           role="menuitem"><i class="icon fa fa-wrench fa-fw iconsmall"
+                              aria-hidden="true" title="Tuỳ chọn"></i>&nbsp;Change password</a>
+        <div class="dropdown-divider" role="presentation"></div>
+        <a (click)="logout()" class="dropdown-item"
+        ><i class="icon fa fa-sign-out fa-fw iconsmall" aria-hidden="true"
+            title="Thoát"></i>&nbsp;Log out</a>
+      </div>
+    </div>
+  </div>
+
+</nav>
+<!--/ Nav Star /-->
+

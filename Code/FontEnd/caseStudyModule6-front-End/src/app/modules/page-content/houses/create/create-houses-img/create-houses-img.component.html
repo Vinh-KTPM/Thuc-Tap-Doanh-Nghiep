@@ -1,0 +1,92 @@
+<br>
+<br>
+<br>
+<br>
+<hr>
+<hr>
+<div class="text-center"><ul>{{this.mess}}</ul></div>
+<div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="tab-content">
+        <div class="tab-pane active">
+          <div class="form-group">
+            <div class="text-center">
+              <div class="text-center" *ngIf="Img[0]">
+                <img src="{{Img[0]}}" style="width: 300px;height: 300px" >
+              </div>
+              <div class="text-center" *ngIf="!Img[0]">
+                <img src="https://holcim.com.vn/wp-content/uploads/2019/04/hinh-anh-mau-nha-2-tang-nong-thon-dep-5.jpg" style="width: 300px;height: 300px">
+              </div>
+              <div class="up_button">
+                <label class="fileContainer" for="up_button">
+                  <i class="fa fa-edit" style='font-size:36px'></i>
+                </label>
+                <p hidden><input type="file" accept="image/*" id="up_button" (change)="onFileSelected($event)"
+                                 name="avatarFile"></p>
+              </div>
+              <div class="btn-group">
+                <button  class="btn btn-primary"     (click)="deleteHousesImg(Img[0])">Xóa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tab-content">
+        <div class="tab-pane active">
+          <div class="form-group">
+            <div class="text-center">
+              <div class="text-center" *ngIf="Img[1]">
+                <img src="{{Img[1]}}" style="width: 300px;height: 300px">
+              </div>
+              <div class="text-center" *ngIf="!Img[1]">
+                <img src="https://holcim.com.vn/wp-content/uploads/2019/04/hinh-anh-mau-nha-2-tang-nong-thon-dep-5.jpg" style="width: 300px;height: 300px">
+              </div>
+              <div class="up_button">
+                <label class="fileContainer" for="up_button">
+                  <i class="fa fa-edit" style='font-size:36px'></i>
+                </label>
+                <p hidden><input type="file" accept="image/*"  (change)="onFileSelected($event)"
+                                 name="avatarFile"></p>
+              </div>
+              <div class="btn-group">
+                <a  class="btn btn-primary" (click)="deleteHousesImg(Img[1])">Xóa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tab-content">
+        <div class="tab-pane active">
+          <div class="form-group">
+            <div class="text-center">
+              <div class="text-center" *ngIf="Img[2]">
+                <img src="{{Img[2]}}" style="width: 300px;height: 300px">
+              </div>
+              <div class="text-center" *ngIf="!Img[2]">
+                <img src="https://holcim.com.vn/wp-content/uploads/2019/04/hinh-anh-mau-nha-2-tang-nong-thon-dep-5.jpg" style="width: 300px;height: 300px">
+              </div>
+              <div class="up_button">
+                <label class="fileContainer" for="up_button">
+                  <i class="fa fa-edit" style='font-size:36px'></i>
+                </label>
+                <p hidden><input type="file" accept="image/*"  (change)="onFileSelected($event)"
+                                 name="avatarFile"></p>
+              </div>
+              <div class="btn-group">
+                <a  class="btn btn-primary" (click)="deleteHousesImg(Img[2])">Xóa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5"  style="left: 520px ; top: 60px">
+      <button class="btn btn-lg btn-success" (click)="createHousesImg()" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+    </div>
+  </div>
+</div>
